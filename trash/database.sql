@@ -34,7 +34,14 @@ CREATE TABLE entries(
   CONSTRAINT fk_entries_cateogries FOREIGN KEY(category_id) references categories(id)
 ) ENGINE=InnoDb;
 
-CREATE TABLE entry_tags(
+CREATE TABLE tags(
+  id INT(255) AUTO_INCREMENT NOT NULL,
+  name VARCHAR(255),
+  description VARCHAR(255),
+  CONSTRAINT pk_tags PRIMARY KEY(id)
+) ENGINE=InnoDb;
+
+CREATE TABLE entry_tag(
   id INT(255) AUTO_INCREMENT NOT NULL,
   entry_id INT(255) NOT NULL,
   tag_id INT(255) NOT NULL,
@@ -45,9 +52,21 @@ CREATE TABLE entry_tags(
 
 
 
-CREATE TABLE tags(
-  id INT(255) AUTO_INCREMENT NOT NULL,
-  name VARCHAR(255),
-  description VARCHAR(255),
-  CONSTRAINT pk_tags PRIMARY KEY(id)
-) ENGINE=InnoDb;
+
+
+/* ALGUNES CONSULTES */
+
+/*USE testingmultiverse_blogsymfony3;*/
+
+/*SELECT * FROM testingmultiverse_blogsymfony3.categories;*/
+
+
+/*SELECT * FROM entry_tags;*/
+
+/*SELECT e.title, c.name FROM entries e, categories c WHERE e.id AND c.id=e.id;*/
+
+/*SELECT t.name FROM tags t WHERE t.id in (
+SELECT id FROM entry_tag WHERE entry_id=1) ORDER BY id DESC; */
+
+
+
