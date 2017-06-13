@@ -156,7 +156,7 @@ class Entry
      *
      * @return Entry
      */
-    public function setCategory(\BlogBundle\Entity\Categories $category = null)
+    public function setCategory(\BlogBundle\Entity\Category $category = null)
     {
         $this->category = $category;
 
@@ -180,7 +180,7 @@ class Entry
      *
      * @return Entry
      */
-    public function setUser(\BlogBundle\Entity\Users $user = null)
+    public function setUser(\BlogBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -197,4 +197,3 @@ class Entry
         return $this->user;
     }
 }
-
