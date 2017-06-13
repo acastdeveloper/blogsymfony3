@@ -43,6 +43,15 @@ class Entry
     private $user;
 
 
+
+
+  protected $entryTag;
+
+  public function __construct() {
+    $this->entryTag = new \Doctrine\Common\Collections\ArrayCollection();
+    //Això el que fa es que sigui un array d'objectes quan ens torni les tags
+  }
+
     /**
      * Get id
      *
@@ -196,4 +205,25 @@ class Entry
     {
         return $this->user;
     }
+
+    public function addEntryTag(\BlogBundle\Entity\Tag $tag){
+      $this->entryTag[] = $tag;
+      return $this;
+      //Aquest mètode no el farem servir però serveix per afegir tags a
+      //l'entrada, cada cop que s'invoqui en aquest mètode passant-li un paràmetre
+    }
+
+    public function getEntryTag() {
+        return $this->entryTag;
+    }
+
+
+
+
+
+
+
+
+
+
 }
