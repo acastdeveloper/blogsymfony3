@@ -16,16 +16,18 @@ class DefaultController extends Controller
         $entries =$entry_repo->findAll();
         //Sembla l'equivalent a un SELECT *
         //Obté una matriu d'objectes.
+        echo "<br>";
 
         foreach($entries as $entry) {
             echo "Títol: ".$entry->getTitle()."<br/>";
             echo "Categoria:".$entry->getCategory()->getName()."<br>";
-            echo "Autor:".$entry->getUser()->getName()."<hr>";
+            echo "Autor:".$entry->getUser()->getName();
 
             $tags =$entry->getEntryTag();
             foreach ($tags as $tag) {
                 echo $tag->getTag()->getName().", ";
             }
+            echo "<hr>";
 
         }
         die();

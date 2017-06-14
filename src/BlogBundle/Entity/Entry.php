@@ -1,6 +1,7 @@
 <?php
 
 namespace BlogBundle\Entity;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Entry
@@ -48,7 +49,7 @@ class Entry
   protected $entryTag;
 
   public function __construct() {
-    $this->entryTag = new \Doctrine\Common\Collections\ArrayCollection();
+    $this->entryTag = new ArrayCollection();
     //Això el que fa es que sigui un array d'objectes quan ens torni les tags
   }
 
