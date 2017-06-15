@@ -1,6 +1,7 @@
 <?php
 
 namespace BlogBundle\Entity;
+use \Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Category
@@ -21,6 +22,12 @@ class Category
      * @var string
      */
     private $description;
+
+    protected $entry;
+
+    public function __construct() {
+        $this->entry = new ArrayCollection();//Retornarà un array d'objectes
+    }
 
 
     /**
@@ -80,5 +87,11 @@ class Category
     {
         return $this->description;
     }
+
+    public function getEntries() {
+        return $this->entry;
+    }
+
+
 }
 
