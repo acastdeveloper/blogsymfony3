@@ -8,7 +8,9 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        /* PRIMERA PROVA, D'EXTREURE ATRIBUTS D'ENTRADA I FINS I TOT ATRIBUTS DE CATEGORIA
+
+        /*
+        //PRIMERA PROVA, D'EXTREURE ATRIBUTS D'ENTRADA I FINS I TOT ATRIBUTS DE CATEGORIA
         $em = $this->getDoctrine()->getEntityManager();
         //Instancia un objecte del gestor d'entitats.
         $entry_repo = $em->getRepository("BlogBundle:Entry");
@@ -33,23 +35,38 @@ class DefaultController extends Controller
         }
         */
 
-        $em = $this->getDoctrine()->getEntityManager();
-        //Instancia un objecte del gestor d'entitats.
-        $category_repo = $em->getRepository("BlogBundle:Category");
-        //Instancia un objecte del repositori de la classe category.
-        $categories =$category_repo->findAll();
-        //Sembla l'equivalent a un SELECT *
-        //Obté una matriu d'objectes.
-        echo "<br>";
 
-        foreach($categories as $category) {
+        /*
+        $em = $this->getDoctrine()->getEntityManager();
+        $category_repo = $em->getRepository("BlogBundle:Category");
+        $categories =$category_repo->findAll();
+
+        foreach($categories as $category){
+            echo $category->getName()."<br>";
+            foreach($entries as $entry) {
+                echo getEntries()->getTitle();
+            }
+        }
+        */
+
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $category_repo = $em->getRepository("BlogBundle:Category");
+        $categories = $category_repo->findAll();
+        foreach ($categories as $category){
             echo $category->getName()."<br/>";
 
-            $entries =$category->getEntries();
-            foreach ($tags as $tag) {
-                echo $tag->getTag()->getName().", ";
+            $entries = $category->getEntries();
+            foreach ($entries as $entry){
+                echo $entry->getTitle().", ";
             }
-            echo "<hr>";
+
+            echo "<hr/>";
+        }
+
+
+
+
 
 
 
@@ -58,4 +75,5 @@ class DefaultController extends Controller
         die();
         return $this->render('BlogBundle:Default:index.html.twig');
     }
+
 }
