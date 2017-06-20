@@ -22,8 +22,13 @@ class Tag
      */
     private $description;
 
+	protected $entryTag;
+	
+	public function __construct() {
+		$this->entryTag = new \Doctrine\Common\Collections\ArrayCollection();
+	}
 
-    /**
+	/**
      * Get id
      *
      * @return integer
@@ -80,5 +85,9 @@ class Tag
     {
         return $this->description;
     }
+	
+	public function getEntryTag(){
+		return $this->entryTag;
+	}
 }
 
