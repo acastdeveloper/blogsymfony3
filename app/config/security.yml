@@ -4,7 +4,10 @@ security:
     encoders:
         BlogBundle\Entity\User:
             algorithm: bcrypt
+            #Utilitzem aquesta pagina per encriptar
+            #https://www.dailycred.com/article/bcrypt-calculator
             cost: 4
+            #nombre de xifrats
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
@@ -12,6 +15,7 @@ security:
             entity:
                 class: BlogBundle:User
                 property: email
+                #email va a ser el username per logejar-se
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -28,6 +32,7 @@ security:
             logout:
                 path: /logout
                 target: /login
+                #quan sortim de sessió ens redirigirà a login o al que posem a target
                 
             
             # activate different ways to authenticate

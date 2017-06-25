@@ -20,7 +20,7 @@
         <hr/>
     
     
-        <form action="{{path("login_check")}}" method="post">
+        <form action="{#{{path("login_check")}}#}" method="post">
             <label>Email:</label>
             <input type="email" id="username" name="_username" value="{{ last_username }}" class="form-control" />
             <br/>
@@ -40,8 +40,10 @@
         {% for message in app.session.flashbag().get('status') %}
             <div class="alert alert-success">{{ message }}</div>
         {% endfor %}
+        {#
         {{form_start(form, {'action':'', 'method':'POST'})}}
         {{form_end(form)}}
+        #}
     </div>
     
     <div class="clearfix"></div>

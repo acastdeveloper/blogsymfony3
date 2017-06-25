@@ -4,6 +4,8 @@ namespace BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+//Li passem l'objecte Request perquè passarem variables via post o get, en aquest
+//cas les variables seran les de fer el login
 use Symfony\Component\HttpFoundation\Session\Session;
 use BlogBundle\Entity\User;
 use BlogBundle\Form\UserType;
@@ -20,8 +22,11 @@ class UserController extends Controller
 	public function loginAction(Request $request){
 		$authenticationUtils = $this->get("security.authentication_utils");
 		$error = $authenticationUtils->getLastAuthenticationError();
+                //captura el darrer error d'autenticació els capturarà per aquí
 		$lastUsername = $authenticationUtils->getLastUsername();
+                //captura el username
 		
+                /*
 		$user = new User();
 		$form = $this->createForm(UserType::class,$user);
 		
@@ -63,10 +68,12 @@ class UserController extends Controller
 
 			$this->session->getFlashBag()->add("status",$status);
 		}
+                */
 		return $this->render("BlogBundle:User:login.html.twig", array(
 			"error" => $error,
-			"last_username" => $lastUsername,
-			"form" => $form->createView()
+			"last_username" => $lastUsername/*,
+			"form" => $form->createView()*/
+                        //Aquestes són variables que utilitzarà la vista
 		)); 
 	}
 }

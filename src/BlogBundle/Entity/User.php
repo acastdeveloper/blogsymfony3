@@ -1,7 +1,12 @@
 <?php
 
 namespace BlogBundle\Entity;
+
+//Afegim la següent línia perquè treballi en conjunt amb el component d'autenticació
 use Symfony\Component\Security\Core\User\UserInterface;
+
+
+
 /**
  * User
  */
@@ -48,13 +53,16 @@ class User implements UserInterface
 	public function getUsername() {
 		return $this->email;
 	}
+        //Aquest és l'username
 	
 	public function getSalt() {
 		return null;
 	}
+        
 	
 	public function getRoles() {
 		return array($this->getRole());
+                //Tirant de la base de dades trobarà el rol d'aquest usuari
 	}
 
 	public function eraseCredentials() {
